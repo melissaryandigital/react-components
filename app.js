@@ -26,7 +26,7 @@ class GroceryListItem extends React.Component {
 
     // Add CSS style declaration
     var style = {
-      textDecoration: this.state.done ? 'line-through' : 'none'
+      fontWeight: this.state.done ? 'bold' : 'none'
     };
 
     // Insert the style property
