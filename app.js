@@ -55,6 +55,7 @@ var App = () => (
   </div>
 )
 
+
 // Array of grocery items
 var groceryItems = ['Eggs', 'Coffee', 'Jalapenos'];
 
