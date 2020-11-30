@@ -1,30 +1,43 @@
 // TODO
 
-// Array of grocery items
-var groceryItems = ['Eggs', 'Coffee', 'Jalapenos'];
-
-
-// Click event
-var onListItemClick = (event) => {
-  console.log('I got clicked!');
-}
-
-
 // Individual grocery list item
 class GroceryListItem extends React.Component {
 
+  // Set up the constructor function
   constructor(props) {
     super(props);
+
+    // Set the initial state
+    this.state = {
+      done: false
+    }
+  }
+
+  // Hover event function
+  onListItemHover() {
+
+    // Change/set the state property
+    this.setState({
+      done: !this.state.done
+    })
   }
 
   render() {
-    return(
-      <li onClick={onListItemClick}>{this.props.item}</li>
+
+    // Add CSS style declaration
+    var style = {
+      textDecoration: this.state.done ? 'line-through' : 'none'
+    };
+
+    // Insert the style property
+    // And bind the event to the object that triggers it
+    return (
+      <li style={style} onMouseOver={this.onListItemHover.bind(this)}>{this.props.item}</li>
     );
   }
 }
 
-// Grocery List ul
+// Grocery List component ul
 var GroceryList = (props) => (
   <ul>
     {props.groceryItems.map(item =>
@@ -33,7 +46,8 @@ var GroceryList = (props) => (
   </ul>
 )
 
-// App container
+// App container that contains the Grocery List component
+// groceryItems property set to the array of items
 var App = () => (
   <div>
     <h2>My Grocery List</h2>
@@ -41,8 +55,8 @@ var App = () => (
   </div>
 )
 
-
-
+// Array of grocery items
+var groceryItems = ['Eggs', 'Coffee', 'Jalapenos'];
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
