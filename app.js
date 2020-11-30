@@ -1,12 +1,30 @@
 // TODO
 
+// Array of grocery items
 var groceryItems = ['Eggs', 'Coffee', 'Jalapenos'];
 
-// displays one item as a list item
-var GroceryListItem = (props) => (
-  <li>{props.item}</li>
-)
 
+// Click event
+var onListItemClick = (event) => {
+  console.log('I got clicked!');
+}
+
+
+// Individual grocery list item
+class GroceryListItem extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <li onClick={onListItemClick}>{this.props.item}</li>
+    );
+  }
+}
+
+// Grocery List ul
 var GroceryList = (props) => (
   <ul>
     {props.groceryItems.map(item =>
@@ -15,6 +33,7 @@ var GroceryList = (props) => (
   </ul>
 )
 
+// App container
 var App = () => (
   <div>
     <h2>My Grocery List</h2>
